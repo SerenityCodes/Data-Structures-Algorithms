@@ -1,3 +1,6 @@
+#ifndef DYNAMICARRAY_H
+#define DYNAMICARRAY_H
+
 #include <iostream>
 #include <type_traits>
 
@@ -27,14 +30,6 @@ class DynamicArray {
 
         [[nodiscard]] bool empty() const;
 };
-
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const DynamicArray<T>& array) {
-    for (int i = 0; i < array.size(); i++) {
-        os << array[i] << '\n';
-    }
-    return os;
-}
 
 template <typename T>
 DynamicArray<T>::DynamicArray() : _size(0), _capacity(2), _arr(new T[_capacity]) { }
@@ -114,12 +109,12 @@ void DynamicArray<T>::remove(const T& elem) {
 
 template <typename T>
 T DynamicArray<T>::front() const {
-    return get(0);
+    return operator[](0);
 }
 
 template <typename T>
 T DynamicArray<T>::back() const {
-    return get(_size - 1);
+    return operator[](_size - 1);
 }
 
 template <typename T>
@@ -137,3 +132,6 @@ void DynamicArray<T>::removeAt(int index) {
         if (i == index) remove(_arr[i]);
     }
 }
+
+
+#endif

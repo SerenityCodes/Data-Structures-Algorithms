@@ -9,6 +9,3 @@ add_compile_options(-Wall -Wextra -Wpedantic -fmessage-length=80 -fno-diagnostic
         -Wzero-as-null-pointer-constant)
 
 add_executable(${PROJECT_NAME} main.cc)
-
-add_custom_target(${PROJECT_NAME}.tar ALL COMMAND
-        tar -cf ${PROJECT_NAME}.tar *.cc *.h CMakeLists.txt)
